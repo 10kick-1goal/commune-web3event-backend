@@ -2,11 +2,11 @@ from django.db import models
 
 
 class EventUrl(models.Model):
-    type = models.CharField(max_length=20)
-    url = models.CharField(max_length=200)
+    source_url = models.CharField(max_length=200)
+    site_type = models.CharField(max_length=5, default="0")
 
     def __str__(self):
-        return self.url
+        return self.source_url
 
 
 class City(models.Model):
@@ -18,18 +18,16 @@ class City(models.Model):
 
 
 class Web3event(models.Model):
-    title = models.CharField(max_length=100)
-    image = models.CharField(max_length=500)
-    source_url = models.CharField(max_length=100)
-    # event_url = models.CharField(max_length=100)
-    # summary = models.CharField(max_length=300)
-    # description = models.CharField()
-    organizer = models.CharField(max_length=50)
-    # start_time = models.CharField(max_length=20)
-    # end_time = models.CharField(max_length=20)
-    # time_zone = models.CharField(max_length=50)
-    address = models.CharField(max_length=50)
-    # city = models.ForeignKey(City, on_delete=models.CASCADE)
+    title = models.CharField()
+    image = models.ImageField(upload_to='images/') 
+    organizers = models.CharField()
+    address = models.CharField()
+    time = models.CharField()
+    description = models.CharField()
+    presenter = models.CharField()
+    tags = models.CharField()
 
     def __str__(self):
         return self.title
+        
+    
